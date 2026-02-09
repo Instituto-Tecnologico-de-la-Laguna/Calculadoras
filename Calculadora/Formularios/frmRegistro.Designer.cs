@@ -30,16 +30,25 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            label1 = new Label();
-            txtNombre = new TextBox();
-            label2 = new Label();
-            txtApellido = new TextBox();
-            label3 = new Label();
-            dtpFecha = new DateTimePicker();
             btnRegistrar = new Button();
+            dtpFecha = new DateTimePicker();
+            label3 = new Label();
+            txtApellido = new TextBox();
+            label2 = new Label();
+            txtNombre = new TextBox();
+            label1 = new Label();
+            tabPage2 = new TabPage();
+            splitContainer1 = new SplitContainer();
+            dgvPersonas = new DataGridView();
+            btnEliminar = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPersonas).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -49,8 +58,9 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(794, 451);
+            tabControl1.Size = new Size(600, 354);
             tabControl1.TabIndex = 0;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -64,53 +74,27 @@
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(786, 413);
+            tabPage1.Size = new Size(592, 316);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Registros";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // btnRegistrar
             // 
-            tabPage2.Location = new Point(4, 34);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(786, 413);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Mostrar";
-            tabPage2.UseVisualStyleBackColor = true;
+            btnRegistrar.Location = new Point(462, 253);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(112, 34);
+            btnRegistrar.TabIndex = 6;
+            btnRegistrar.Text = "Registrar";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
-            // label1
+            // dtpFecha
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Nombre";
-            label1.Click += label1_Click;
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(22, 59);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(398, 31);
-            txtNombre.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(31, 130);
-            label2.Name = "label2";
-            label2.Size = new Size(86, 25);
-            label2.TabIndex = 2;
-            label2.Text = "Apellidos";
-            // 
-            // txtApellido
-            // 
-            txtApellido.Location = new Point(31, 158);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(389, 31);
-            txtApellido.TabIndex = 3;
+            dtpFecha.Location = new Point(31, 253);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(300, 31);
+            dtpFecha.TabIndex = 5;
             // 
             // label3
             // 
@@ -121,33 +105,105 @@
             label3.TabIndex = 4;
             label3.Text = "Fecha de Nacimiento";
             // 
-            // dtpFecha
+            // txtApellido
             // 
-            dtpFecha.Location = new Point(31, 253);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(300, 31);
-            dtpFecha.TabIndex = 5;
+            txtApellido.Location = new Point(31, 158);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(389, 31);
+            txtApellido.TabIndex = 3;
             // 
-            // btnRegistrar
+            // label2
             // 
-            btnRegistrar.Location = new Point(654, 360);
-            btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(112, 34);
-            btnRegistrar.TabIndex = 6;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Location = new Point(31, 130);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 25);
+            label2.TabIndex = 2;
+            label2.Text = "Apellidos";
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(22, 59);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(398, 31);
+            txtNombre.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(22, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Nombre";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(splitContainer1);
+            tabPage2.Location = new Point(4, 34);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(592, 316);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Mostrar";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(3, 3);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(dgvPersonas);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(btnEliminar);
+            splitContainer1.Size = new Size(586, 310);
+            splitContainer1.SplitterDistance = 245;
+            splitContainer1.TabIndex = 1;
+            // 
+            // dgvPersonas
+            // 
+            dgvPersonas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPersonas.Dock = DockStyle.Fill;
+            dgvPersonas.Location = new Point(0, 0);
+            dgvPersonas.Name = "dgvPersonas";
+            dgvPersonas.RowHeadersWidth = 62;
+            dgvPersonas.Size = new Size(586, 245);
+            dgvPersonas.TabIndex = 1;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Enabled = false;
+            btnEliminar.Location = new Point(457, 12);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(112, 34);
+            btnEliminar.TabIndex = 0;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // frmRegistro
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(607, 354);
             Controls.Add(tabControl1);
             Name = "frmRegistro";
             Text = "Registro Alumnos";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPersonas).EndInit();
             ResumeLayout(false);
         }
 
@@ -163,5 +219,8 @@
         private Label label3;
         private TextBox txtApellido;
         private Label label2;
+        private SplitContainer splitContainer1;
+        private DataGridView dgvPersonas;
+        private Button btnEliminar;
     }
 }

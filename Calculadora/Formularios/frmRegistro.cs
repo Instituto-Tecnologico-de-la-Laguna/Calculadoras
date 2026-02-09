@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calculadora.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,49 @@ namespace Calculadora.Formularios
 {
     public partial class frmRegistro : Form
     {
+        List<Persona> persona = new List<Persona>();
         public frmRegistro()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            persona.Add(new Persona()
+            {
+                Nombre = txtNombre.Text,
+                Apellido = txtApellido.Text,
+                Fecha = dtpFecha.Value
+            });
+            MessageBox.Show("Datos Registrados", "Sistema", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                dgvPersonas.DataSource = null;
+                dgvPersonas.DataSource = persona;
+                verificarRegistros();
+            }
+        }
+
+        private void verificarRegistros()
+        {
+            if (persona.Count == 0)
+                btnEliminar.Enabled = false;
+            else
+                btnEliminar.Enabled = true;
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            persona.RemoveAt(dgvPersonas.CurrentRow.Index);
+            dgvPersonas.DataSource = null; //Limpiar el DataGrid
+            dgvPersonas.DataSource = persona; //Volver a llenar el DGV
+            verificarRegistros(); //Verificar si habilito el boton
         }
     }
 }
