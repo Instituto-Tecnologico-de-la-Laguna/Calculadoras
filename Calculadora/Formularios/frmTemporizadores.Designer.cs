@@ -59,7 +59,7 @@
             mnsAlarma.Items.AddRange(new ToolStripItem[] { establecerToolStripMenuItem });
             mnsAlarma.Location = new Point(0, 0);
             mnsAlarma.Name = "mnsAlarma";
-            mnsAlarma.Size = new Size(572, 33);
+            mnsAlarma.Size = new Size(503, 33);
             mnsAlarma.TabIndex = 1;
             mnsAlarma.Text = "menuStrip1";
             // 
@@ -73,7 +73,7 @@
             // alarma1ToolStripMenuItem
             // 
             alarma1ToolStripMenuItem.Name = "alarma1ToolStripMenuItem";
-            alarma1ToolStripMenuItem.Size = new Size(270, 34);
+            alarma1ToolStripMenuItem.Size = new Size(185, 34);
             alarma1ToolStripMenuItem.Text = "Alarma 1";
             alarma1ToolStripMenuItem.Click += alarma1ToolStripMenuItem_Click;
             // 
@@ -81,7 +81,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(572, 179);
+            ClientSize = new Size(503, 187);
             Controls.Add(lblHora);
             Controls.Add(mnsAlarma);
             MainMenuStrip = mnsAlarma;
