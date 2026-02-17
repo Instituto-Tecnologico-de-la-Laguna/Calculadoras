@@ -47,7 +47,13 @@ namespace Calculadora
         private void contadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmContador contador = new frmContador();
-                        contador.Show();
+            contador.Show();
+        }
+
+        private void xMLDirectorioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmXMLAccess xmlAcceso= new frmXMLAccess();
+            xmlAcceso.Show();
         }
     }
 }
